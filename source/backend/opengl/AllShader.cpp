@@ -938,7 +938,7 @@ const char* glsl_sigmoid_glsl =
 "    if(pos.x < imgSize.x && pos.y < imgSize.y)\n"
 "    {\n"
 "        vec4 dataIn =  texelFetch(uInput, pos, 0);\n"
-"        vec4 dataTemp = 1.0/(1.0 + exp(-dataIn));\n"
+"        vec4 dataTemp = vec4(1.0)/(vec4(1.0) + exp(-dataIn));\n"
 "        imageStore(uOutput, pos, dataTemp);\n"
 "    }\n"
 "}\n"
