@@ -27,6 +27,7 @@ extern const char* glsl_convolution_glsl;
 extern const char* glsl_kernel2image_adreno_glsl;
 extern const char* glsl_binary_glsl;
 extern const char* glsl_relu_glsl;
+extern const char* glsl_sigmoid_glsl;
 extern const char* glsl_nc4hw4_buffer_to_image_glsl;
 extern const char* glsl_nhwc_buffer_to_image_glsl;
 extern const char* glsl_im2col_glsl;

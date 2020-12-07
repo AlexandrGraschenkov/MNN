@@ -926,6 +926,23 @@ const char* glsl_relu_glsl =
 "    }\n"
 "}\n"
 ;
+const char* glsl_sigmoid_glsl =
+"layout(FORMAT, binding=0) writeonly uniform PRECISION image3D uOutput;\n"
+"layout(location=1) uniform mediump sampler3D uInput;\n"
+"layout(location=2) uniform ivec4 imgSize;\n"
+"layout (local_size_x = XLOCAL, local_size_y = YLOCAL, local_size_z = ZLOCAL) in;\n"
+"void main()\n"
+"{\n"
+"    ivec3 pos = ivec3(gl_GlobalInvocationID);\n"
+"    ivec3 imgSize = imgSize.xyz;\n"
+"    if(pos.x < imgSize.x && pos.y < imgSize.y)\n"
+"    {\n"
+"        vec4 dataIn =  texelFetch(uInput, pos, 0);\n"
+"        vec4 dataTemp = 1.0/(1.0 + exp(-dataIn));\n"
+"        imageStore(uOutput, pos, dataTemp);\n"
+"    }\n"
+"}\n"
+;
 const char* glsl_nc4hw4_buffer_to_image_glsl = 
 "layout(FORMAT, binding=0) writeonly uniform PRECISION image3D uImage;\n"
 "layout(binding=1) readonly buffer destBuffer{\n"
